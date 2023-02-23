@@ -70,7 +70,7 @@ function placeInTable(y, x) {
   const piece = document.createElement('div');
   piece.classList.add('piece');
   piece.classList.add(`p${currPlayer}`);
-  piece.style.top = -50 * (y + 2);
+  piece.style.top = -50 * (y + 2); // what does this line do?
 
   const spot = document.getElementById(`$c-${y}-${x}`);
   spot.append(piece);
@@ -127,7 +127,7 @@ function checkForWin() {
         x >= 0 &&
         x < WIDTH &&
         board[y][x] === currPlayer
-    );
+    )
   }
 
   for (let y = 0; y < HEIGHT; y++) {
