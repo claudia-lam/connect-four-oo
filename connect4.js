@@ -180,6 +180,8 @@ class Game {
   }
 
   makeBoard() {
+    document.getElementById("board").innerHTML = ""; // clear DOM
+    console.log("We made a board");
     for (let y = 0; y < this.height; y++) {
       this.board.push(Array.from({ length: this.width }));
     }
@@ -291,7 +293,7 @@ class Game {
           x < this.width &&
           this.board[y][x] === this.currPlayer
       );
-    }
+    };
 
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
