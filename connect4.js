@@ -169,6 +169,7 @@
 //   }
 // }
 
+//TODO:testing
 class Game {
   //build the constructor function, params: height, width, board, currPlayer
   constructor(height, width) {
