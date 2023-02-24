@@ -191,7 +191,7 @@ class Game {
     // make column tops (clickable area for adding a piece to that column)
     const top = document.createElement("tr");
     top.setAttribute("id", "column-top");
-    top.addEventListener("click", handleClick);
+    top.addEventListener("click", this.handleClick.bind(this));
 
     for (let x = 0; x < this.width; x++) {
       const headCell = document.createElement("td");
@@ -260,7 +260,7 @@ class Game {
     this.placeInTable(y, x);
 
     // check for win
-    if (checkForWin()) {
+    if (this.checkForWin()) {
       return this.endGame(`Player ${this.currPlayer} won!`);
     }
 
@@ -276,10 +276,12 @@ class Game {
   /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
   checkForWin() {
-    function _win(cells) {
+    console.log("this", this);
+    const _win = (cells) => {
       // Check four cells to see if they're all color of current player
       //  - cells: list of four (y, x) cells
       //  - returns true if all are legal coordinates & all match currPlayer
+      // console.log("this", this);
 
       return cells.every(
         ([y, x]) =>
