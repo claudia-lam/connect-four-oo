@@ -1,3 +1,4 @@
+"use strict";
 /** This is not OOP style code */
 // /** Connect Four
 //  *
@@ -189,7 +190,7 @@ class Game {
 
   makeHtmlBoard() {
     const boardUI = document.getElementById("board");
-
+    // TODO: add clearing dom here
     // make column tops (clickable area for adding a piece to that column)
     const top = document.createElement("tr");
     top.setAttribute("id", "column-top");
