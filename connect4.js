@@ -181,7 +181,6 @@ class Game {
   }
 
   makeBoard() {
-    document.getElementById("board").innerHTML = ""; // clear DOM
     console.log("We made a board");
     for (let y = 0; y < this.height; y++) {
       this.board.push(Array.from({ length: this.width }));
@@ -190,7 +189,7 @@ class Game {
 
   makeHtmlBoard() {
     const boardUI = document.getElementById("board");
-    // TODO: add clearing dom here
+    document.getElementById("board").innerHTML = ""; // clear DOM
     // make column tops (clickable area for adding a piece to that column)
     const top = document.createElement("tr");
     top.setAttribute("id", "column-top");
