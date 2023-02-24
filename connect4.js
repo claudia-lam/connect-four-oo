@@ -333,5 +333,12 @@ class Game {
   }
 }
 
-const game1 = new Game(6, 7); // assuming constructor takes height, width
-console.log(game1);
+//create a start button on dom
+const startBtn = document.createElement("button");
+//add event listener to start button
+startBtn.innerText = "Start";
+const gameContainer = document.getElementById("game");
+gameContainer.append(startBtn);
+startBtn.addEventListener("click", () => {
+  const game1 = new Game(6, 7); // assuming constructor takes height, width
+});
