@@ -175,10 +175,12 @@ class Game {
     this.height = height;
     this.width = width;
     this.board = [];
-    this.currPlayer = 1;
     this.makeBoard();
     this.makeHtmlBoard();
     this.gameOver = false;
+    this.player1 = new Player("red");
+    this.player2 = new Player("blue");
+    this.currPlayer = this.player1; //temporarily left there, will delete
   }
 
   makeBoard() {
@@ -233,7 +235,8 @@ class Game {
   placeInTable(y, x) {
     const piece = document.createElement("div");
     piece.classList.add("piece");
-    piece.classList.add(`p${this.currPlayer}`);
+    // console.log("placeInTable", this.currPlayer.color);
+    piece.classList.add(`p${this.currPlayer.color}`);
     piece.style.top = -50 * (y + 2); // what does this line do?
 
     const spot = document.getElementById(`c-${y}-${x}`);
@@ -266,7 +269,8 @@ class Game {
 
     // check for win
     if (this.checkForWin()) {
-      return this.endGame(`Player ${this.currPlayer} won!`);
+      console.log("checkWin", this.currPlayer);
+      return this.endGame(`Player ${this.currPlayer.color} won!`);
     }
 
     // check for tie
@@ -275,7 +279,8 @@ class Game {
     }
 
     // switch players
-    this.currPlayer = this.currPlayer === 1 ? 2 : 1; //TODO: update this too
+    this.currPlayer =
+      this.currPlayer === this.player1 ? this.player2 : this.player1; //TODO: update this too
   }
 
   /** checkForWin: check board cell-by-cell for "does a win start here?" */
@@ -350,6 +355,6 @@ const gameContainer = document.getElementById("game");
 gameContainer.append(startBtn);
 startBtn.addEventListener("click", () => {
   const game1 = new Game(6, 7); // assuming constructor takes height, width
-  game1.player1 = new Player("red");
-  game1.player2 = new Player("blue");
+  // game1.player1 = new Player("red");
+  // game1.player2 = new Player("blue");
 });
