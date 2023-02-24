@@ -178,6 +178,7 @@ class Game {
     this.currPlayer = 1;
     this.makeBoard();
     this.makeHtmlBoard();
+    this.gameOver = false;
   }
 
   makeBoard() {
@@ -243,11 +244,13 @@ class Game {
 
   endGame(msg) {
     alert(msg);
+    this.gameOver = true;
   }
 
   /** handleClick: handle click of column top to play piece */
 
   handleClick(evt) {
+    if (this.gameOver) return;
     // get x from ID of clicked cell
     const x = +evt.target.id;
 
