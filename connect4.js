@@ -275,7 +275,7 @@ class Game {
     }
 
     // switch players
-    this.currPlayer = this.currPlayer === 1 ? 2 : 1;
+    this.currPlayer = this.currPlayer === 1 ? 2 : 1; //TODO: update this too
   }
 
   /** checkForWin: check board cell-by-cell for "does a win start here?" */
@@ -336,6 +336,12 @@ class Game {
   }
 }
 
+class Player {
+  constructor(color) {
+    this.color = color;
+  }
+}
+
 //create a start button on dom
 const startBtn = document.createElement("button");
 //add event listener to start button
@@ -344,4 +350,6 @@ const gameContainer = document.getElementById("game");
 gameContainer.append(startBtn);
 startBtn.addEventListener("click", () => {
   const game1 = new Game(6, 7); // assuming constructor takes height, width
+  game1.player1 = new Player("red");
+  game1.player2 = new Player("blue");
 });
